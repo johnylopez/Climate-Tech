@@ -4,6 +4,7 @@ import LandingPage from './pages/LandingPage'
 import CompanyDashboard from './pages/CompanyDashboard'
 import RegulatoryDashboard from './pages/RegulatoryDashboard'
 import PublicDashboard from './pages/PublicDashboard'
+import ComplianceMap from './pages/ComplianceMap'
 import Navigation from './components/Navigation'
 export function App() {
   return (
@@ -19,6 +20,7 @@ export function App() {
               element={<RegulatoryDashboard />}
             />
             <Route path="/public-dashboard" element={<PublicDashboard />} />
+            <Route path="/compliance-map" element={<ComplianceMap />} />
           </Routes>
         </main>
       </BrowserRouter>

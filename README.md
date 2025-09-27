@@ -1,4 +1,4 @@
-# Climate Tech Challeng
+# Climate Tech Challenge
 
 First clone the repo.
 
