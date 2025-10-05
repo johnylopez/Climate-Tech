@@ -49,10 +49,10 @@ const CompanyDashboard = () => {
           <ClockIcon size={20} />
           <span>View Past Reports</span>
         </button>
-        <button className="flex items-center justify-center gap-2 p-4 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
+        {/* <button className="flex items-center justify-center gap-2 p-4 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
           <AlertCircleIcon size={20} />
           <span>Compliance Status</span>
-        </button>
+        </button> */}
       </div>
       {/* Compliance Alerts */}
       <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
