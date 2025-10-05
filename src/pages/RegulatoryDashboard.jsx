@@ -18,48 +18,12 @@ import {
   CheckCircleIcon,
   BarChart2Icon,
 } from 'lucide-react'
+import AIAssistant from '../components/AIAssistant.jsx'
+import appData from '../data/appData.json'
 const COLORS = ['#10B981', '#F59E0B', '#EF4444', '#6366F1', '#8B5CF6']
-const complianceData = [
-  {
-    name: 'Compliant',
-    value: 78,
-  },
-  {
-    name: 'Pending Review',
-    value: 12,
-  },
-  {
-    name: 'Non-Compliant',
-    value: 10,
-  },
-]
-const emissionsTrendData = [
-  {
-    year: '2018',
-    emissions: 15000,
-  },
-  {
-    year: '2019',
-    emissions: 14200,
-  },
-  {
-    year: '2020',
-    emissions: 12800,
-  },
-  {
-    year: '2021',
-    emissions: 13500,
-  },
-  {
-    year: '2022',
-    emissions: 12300,
-  },
-  {
-    year: '2023',
-    emissions: 11200,
-  },
-]
 const RegulatoryDashboard = () => {
+  const { complianceData, emissionsTrendData, companyRequiringAttention } =
+    appData
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
@@ -229,67 +193,35 @@ const RegulatoryDashboard = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  Louisiana Petrochemical Inc.
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  Chemical Manufacturing
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  Missing Q2 Report
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                    Overdue
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800">
-                  <button>Send Notice</button>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  Gulf Coast Energy
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  Energy Production
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  Emissions Exceed Limit
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                    Under Review
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800">
-                  <button>Review Data</button>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  Bayou Steel Works
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  Manufacturing
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  Inconsistent Data
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                    Flagged
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800">
-                  <button>Request Correction</button>
-                </td>
-              </tr>
+              {companyRequiringAttention.map((company, index) => (
+                <tr key={index}>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {company.name}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {company.industry}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {company.issue}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span
+                      className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${company.status === 'Overdue' ? 'bg-red-100 text-red-800' : company.status === 'Under Review' ? 'bg-yellow-100 text-yellow-800' : 'bg-yellow-100 text-yellow-800'}`}
+                    >
+                      {company.status}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800">
+                    <button>{company.action}</button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
       </div>
+      {/* AI Assistant for Regulatory Users */}
+      <AIAssistant userType="regulatory" />
     </div>
   )
 }

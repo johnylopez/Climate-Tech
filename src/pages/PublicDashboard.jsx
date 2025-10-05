@@ -13,106 +13,13 @@ import {
   Cell,
 } from 'recharts'
 import { InfoIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
-const industryData = [
-  {
-    name: 'Oil & Gas',
-    emissions: 4500,
-  },
-  {
-    name: 'Chemical',
-    emissions: 3800,
-  },
-  {
-    name: 'Manufacturing',
-    emissions: 2500,
-  },
-  {
-    name: 'Energy',
-    emissions: 3200,
-  },
-  {
-    name: 'Transportation',
-    emissions: 1800,
-  },
-]
-const regionData = [
-  {
-    name: 'Southeast',
-    value: 35,
-  },
-  {
-    name: 'Southwest',
-    value: 25,
-  },
-  {
-    name: 'Northeast',
-    value: 15,
-  },
-  {
-    name: 'Northwest',
-    value: 10,
-  },
-  {
-    name: 'Central',
-    value: 15,
-  },
-]
-const industryPolicyData = [
-  {
-    industry: 'Oil & Gas',
-    policies: [
-      'LDEQ Title V Air Quality Permits - Required for facilities emitting >100 tons/year of any regulated pollutant',
-      'Louisiana Spill Prevention and Control Act - Requires containment systems for all oil storage',
-      'LAC 33:III.501 - Requires quarterly emissions monitoring and reporting',
-      'LAC 33:III.2108 - Specific VOC emission limits for petroleum refineries',
-    ],
-    thresholds: '100 tons CO₂ per year',
-  },
-  {
-    industry: 'Chemical',
-    policies: [
-      'Louisiana Toxic Air Pollutant Ambient Air Standard (LAC 33:III.5112)',
-      'LDEQ Title V Air Quality Permits - Required for facilities emitting >100 tons/year',
-      'LAC 33:III.2103 - Requires continuous emissions monitoring systems (CEMS)',
-      'Chemical Accident Prevention Program - Required for facilities with threshold quantities of regulated substances',
-    ],
-    thresholds: '75 tons CO₂ per year',
-  },
-  {
-    industry: 'Manufacturing',
-    policies: [
-      'LAC 33:III.919 - Emissions Inventory Reporting requirements',
-      'Louisiana Air Quality Regulations (LAC 33:III) - General manufacturing emissions standards',
-      'LAC 33:III.2123 - Organic Solvent-Bearing Materials requirements',
-      'Prevention of Significant Deterioration (PSD) permit requirements',
-    ],
-    thresholds: '90 tons CO₂ per year',
-  },
-  {
-    industry: 'Energy',
-    policies: [
-      'Louisiana Mercury Risk Reduction Act - For coal-fired power plants',
-      'LAC 33:III.1101 - Control of emissions from power plants',
-      'Clean Air Interstate Rule (CAIR) - SO₂ and NOₓ trading programs',
-      'Acid Rain Program requirements for electricity generating facilities',
-    ],
-    thresholds: '110 tons CO₂ per year',
-  },
-  {
-    industry: 'Transportation',
-    policies: [
-      'LAC 33:III.2201 - Motor Vehicle Inspection/Maintenance Program',
-      'LAC 33:III.1431 - Emissions from marine vessels and cargo handling',
-      'Louisiana Diesel Emissions Reduction Act (DERA) Program',
-      'LAC 33:III.1101 - Control of emissions from transportation facilities',
-    ],
-    thresholds: '60 tons CO₂ per year',
-  },
-]
+import AIAssistant from '../components/AIAssistant.jsx'
+import appData from '../data/appData.json'
 const COLORS = ['#10B981', '#F59E0B', '#EF4444', '#6366F1', '#8B5CF6']
 const PublicDashboard = () => {
   const [expandedIndustry, setExpandedIndustry] = useState(null)
   const [showComplianceInfo, setShowComplianceInfo] = useState(false)
+  const { industryData, regionData, industryPolicyData } = appData
   const toggleIndustry = (industry) => {
     if (expandedIndustry === industry) {
       setExpandedIndustry(null)
@@ -266,21 +173,27 @@ const PublicDashboard = () => {
           <p className="text-gray-500 text-sm uppercase font-medium">
             Total Annual Emissions
           </p>
-          <p className="text-4xl font-bold text-gray-800 mt-2">11.2M</p>
+          <p className="text-4xl font-bold text-gray-800 mt-2">
+            {appData.stats.trackedCO2}
+          </p>
           <p className="text-gray-500">metric tons of CO₂</p>
         </div>
         <div className="bg-white p-6 rounded-lg shadow text-center">
           <p className="text-gray-500 text-sm uppercase font-medium">
             Year-Over-Year Change
           </p>
-          <p className="text-4xl font-bold text-green-600 mt-2">-8.9%</p>
+          <p className="text-4xl font-bold text-green-600 mt-2">
+            -{appData.stats.emissionsReduction}
+          </p>
           <p className="text-gray-500">from previous year</p>
         </div>
         <div className="bg-white p-6 rounded-lg shadow text-center">
           <p className="text-gray-500 text-sm uppercase font-medium">
             Reporting Companies
           </p>
-          <p className="text-4xl font-bold text-gray-800 mt-2">243</p>
+          <p className="text-4xl font-bold text-gray-800 mt-2">
+            {appData.stats.registeredCompanies}
+          </p>
           <p className="text-gray-500">across all industries</p>
         </div>
       </div>
@@ -384,67 +297,36 @@ const PublicDashboard = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  Louisiana Petrochemical Inc.
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  Chemical
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  890,450 tons
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">
-                  -5.2%
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    Compliant
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  Gulf Coast Energy
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  Energy
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  765,320 tons
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-red-600">
-                  +2.8%
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                    Under Review
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  Bayou Oil Refineries
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  Oil & Gas
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  712,670 tons
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">
-                  -8.3%
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    Compliant
-                  </span>
-                </td>
-              </tr>
+              {appData.companies.slice(0, 3).map((company) => (
+                <tr key={company.id}>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {company.name}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {company.industry}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {company.emissions.toLocaleString()} tons
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">
+                    {company.yoyChange > 0 ? '+' : ''}
+                    {company.yoyChange}%
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span
+                      className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${company.compliance === 'Compliant' ? 'bg-green-100 text-green-800' : company.compliance === 'Under Review' ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800'}`}
+                    >
+                      {company.compliance}
+                    </span>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
       </div>
+      {/* AI Assistant for Public Users */}
+      <AIAssistant userType="public" />
     </div>
   )
 }

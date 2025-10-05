@@ -9,68 +9,17 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts'
-import { PlusIcon, AlertCircleIcon, ClockIcon, XIcon } from 'lucide-react'
+import { PlusIcon, AlertCircleIcon, ClockIcon } from 'lucide-react'
 import NewEmissionsReportForm from '../components/NewEmissionReportForm'
 import PastReportsModal from '../components/PastReportModal'
-const mockData = [
-  {
-    month: 'Jan',
-    emissions: 4000,
-  },
-  {
-    month: 'Feb',
-    emissions: 3000,
-  },
-  {
-    month: 'Mar',
-    emissions: 2000,
-  },
-  {
-    month: 'Apr',
-    emissions: 2780,
-  },
-  {
-    month: 'May',
-    emissions: 1890,
-  },
-  {
-    month: 'Jun',
-    emissions: 2390,
-  },
-]
-const initialReports = [
-  {
-    id: '1',
-    period: 'Q1 2023',
-    submissionDate: 'April 15, 2023',
-    totalEmissions: '12,450',
-    status: 'Compliant',
-    facility: 'Main Plant',
-    notes: 'All emissions within acceptable range.',
-  },
-  {
-    id: '2',
-    period: 'Q4 2022',
-    submissionDate: 'January 15, 2023',
-    totalEmissions: '14,320',
-    status: 'Compliant',
-    facility: 'Main Plant',
-    notes: 'Minor increase due to holiday production.',
-  },
-  {
-    id: '3',
-    period: 'Q3 2022',
-    submissionDate: 'October 15, 2022',
-    totalEmissions: '15,670',
-    status: 'Late Submission',
-    facility: 'Main Plant',
-    notes: 'Delay due to equipment calibration issues.',
-  },
-]
+import AIAssistant from '../components/AIAssistant.jsx'
+import appData from '../data/appData.json'
 const CompanyDashboard = () => {
   const [showNewReportForm, setShowNewReportForm] = useState(false)
   const [showPastReports, setShowPastReports] = useState(false)
-  const [reports, setReports] = useState(initialReports)
+  const [reports, setReports] = useState(appData.reports)
+  // For demo purposes, we'll use the first company in the list
+  const currentCompany = appData.companies[0]
   const handleNewReportSubmit = (newReport) => {
     setReports([newReport, ...reports])
     setShowNewReportForm(false)
@@ -100,10 +49,10 @@ const CompanyDashboard = () => {
           <ClockIcon size={20} />
           <span>View Past Reports</span>
         </button>
-        {/* <button className="flex items-center justify-center gap-2 p-4 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
+        <button className="flex items-center justify-center gap-2 p-4 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
           <AlertCircleIcon size={20} />
           <span>Compliance Status</span>
-        </button> */}
+        </button>
       </div>
       {/* Compliance Alerts */}
       <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
@@ -130,7 +79,7 @@ const CompanyDashboard = () => {
         <div className="h-80">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
-              data={mockData}
+              data={appData.monthlyEmissions}
               margin={{
                 top: 20,
                 right: 30,
@@ -208,6 +157,8 @@ const CompanyDashboard = () => {
           </table>
         </div>
       </div>
+      {/* AI Assistant for Company Users */}
+      <AIAssistant userType="company" companyData={currentCompany} />
       {/* New Emissions Report Modal */}
       {showNewReportForm && (
         <NewEmissionsReportForm

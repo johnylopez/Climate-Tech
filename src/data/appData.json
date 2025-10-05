@@ -1,0 +1,422 @@
+{
+  "companies": [
+    {
+      "id": 1,
+      "name": "Louisiana Petrochemical Inc.",
+      "industry": "Chemical",
+      "position": [30.2154, -91.0336],
+      "emissions": 890450,
+      "yoyChange": -5.2,
+      "compliance": "Compliant",
+      "facility": "Main Plant",
+      "lastReport": "Q1 2023"
+    },
+    {
+      "id": 2,
+      "name": "Gulf Coast Energy",
+      "industry": "Energy",
+      "position": [29.9511, -90.0715],
+      "emissions": 765320,
+      "yoyChange": 2.8,
+      "compliance": "Under Review",
+      "facility": "New Orleans Power Station",
+      "lastReport": "Q2 2023"
+    },
+    {
+      "id": 3,
+      "name": "Bayou Oil Refineries",
+      "industry": "Oil & Gas",
+      "position": [30.2266, -93.2174],
+      "emissions": 712670,
+      "yoyChange": -8.3,
+      "compliance": "Compliant",
+      "facility": "Lake Charles Refinery",
+      "lastReport": "Q1 2023"
+    },
+    {
+      "id": 4,
+      "name": "Shreveport Manufacturing Co.",
+      "industry": "Manufacturing",
+      "position": [32.5252, -93.7502],
+      "emissions": 423150,
+      "yoyChange": -2.1,
+      "compliance": "Compliant",
+      "facility": "North Plant",
+      "lastReport": "Q2 2023"
+    },
+    {
+      "id": 5,
+      "name": "Delta Chemical Processing",
+      "industry": "Chemical",
+      "position": [30.4515, -91.1871],
+      "emissions": 651240,
+      "yoyChange": 1.7,
+      "compliance": "Non-Compliant",
+      "facility": "Baton Rouge Complex",
+      "lastReport": "Q4 2022"
+    },
+    {
+      "id": 6,
+      "name": "Lafourche Energy Systems",
+      "industry": "Energy",
+      "position": [29.7055, -90.5311],
+      "emissions": 542370,
+      "yoyChange": -3.2,
+      "compliance": "Compliant",
+      "facility": "Thibodaux Plant",
+      "lastReport": "Q2 2023"
+    },
+    {
+      "id": 7,
+      "name": "Alexandria Industrial",
+      "industry": "Manufacturing",
+      "position": [31.3113, -92.4451],
+      "emissions": 318900,
+      "yoyChange": -1.5,
+      "compliance": "Under Review",
+      "facility": "Central LA Facility",
+      "lastReport": "Q1 2023"
+    },
+    {
+      "id": 8,
+      "name": "Monroe Gas Works",
+      "industry": "Oil & Gas",
+      "position": [32.5093, -92.1193],
+      "emissions": 289450,
+      "yoyChange": -4.8,
+      "compliance": "Compliant",
+      "facility": "Northeast Processing",
+      "lastReport": "Q2 2023"
+    },
+    {
+      "id": 9,
+      "name": "Houma Shipping & Transport",
+      "industry": "Transportation",
+      "position": [29.5958, -90.7195],
+      "emissions": 187320,
+      "yoyChange": 0.9,
+      "compliance": "Compliant",
+      "facility": "Gulf Port Operations",
+      "lastReport": "Q1 2023"
+    },
+    {
+      "id": 10,
+      "name": "Bossier City Chemicals",
+      "industry": "Chemical",
+      "position": [32.5159, -93.7321],
+      "emissions": 431820,
+      "yoyChange": 3.7,
+      "compliance": "Non-Compliant",
+      "facility": "Red River Plant",
+      "lastReport": "Q4 2022"
+    },
+    {
+      "id": 11,
+      "name": "Lafayette Petroleum",
+      "industry": "Oil & Gas",
+      "position": [30.2241, -92.0198],
+      "emissions": 521430,
+      "yoyChange": -2.3,
+      "compliance": "Under Review",
+      "facility": "Acadiana Complex",
+      "lastReport": "Q1 2023"
+    },
+    {
+      "id": 12,
+      "name": "Hammond Manufacturing",
+      "industry": "Manufacturing",
+      "position": [30.5044, -90.4612],
+      "emissions": 276540,
+      "yoyChange": -6.1,
+      "compliance": "Compliant",
+      "facility": "Tangipahoa Works",
+      "lastReport": "Q2 2023"
+    }
+  ],
+  "reports": [
+    {
+      "id": "1",
+      "companyId": 1,
+      "period": "Q1 2023",
+      "submissionDate": "April 15, 2023",
+      "totalEmissions": "12,450",
+      "status": "Compliant",
+      "facility": "Main Plant",
+      "notes": "All emissions within acceptable range."
+    },
+    {
+      "id": "2",
+      "companyId": 1,
+      "period": "Q4 2022",
+      "submissionDate": "January 15, 2023",
+      "totalEmissions": "14,320",
+      "status": "Compliant",
+      "facility": "Main Plant",
+      "notes": "Minor increase due to holiday production."
+    },
+    {
+      "id": "3",
+      "companyId": 1,
+      "period": "Q3 2022",
+      "submissionDate": "October 15, 2022",
+      "totalEmissions": "15,670",
+      "status": "Late Submission",
+      "facility": "Main Plant",
+      "notes": "Delay due to equipment calibration issues."
+    },
+    {
+      "id": "4",
+      "companyId": 2,
+      "period": "Q2 2023",
+      "submissionDate": "July 14, 2023",
+      "totalEmissions": "18,250",
+      "status": "Under Review",
+      "facility": "New Orleans Power Station",
+      "notes": "Emissions exceed permitted threshold by 3%. Additional verification in progress."
+    },
+    {
+      "id": "5",
+      "companyId": 5,
+      "period": "Q4 2022",
+      "submissionDate": "January 22, 2023",
+      "totalEmissions": "21,740",
+      "status": "Non-Compliant",
+      "facility": "Baton Rouge Complex",
+      "notes": "Emissions exceed permitted threshold by 12%. Remediation plan required."
+    }
+  ],
+  "monthlyEmissions": [
+    {
+      "month": "Jan",
+      "emissions": 4000
+    },
+    {
+      "month": "Feb",
+      "emissions": 3000
+    },
+    {
+      "month": "Mar",
+      "emissions": 2000
+    },
+    {
+      "month": "Apr",
+      "emissions": 2780
+    },
+    {
+      "month": "May",
+      "emissions": 1890
+    },
+    {
+      "month": "Jun",
+      "emissions": 2390
+    }
+  ],
+  "complianceData": [
+    {
+      "name": "Compliant",
+      "value": 78
+    },
+    {
+      "name": "Pending Review",
+      "value": 12
+    },
+    {
+      "name": "Non-Compliant",
+      "value": 10
+    }
+  ],
+  "emissionsTrendData": [
+    {
+      "year": "2018",
+      "emissions": 15000
+    },
+    {
+      "year": "2019",
+      "emissions": 14200
+    },
+    {
+      "year": "2020",
+      "emissions": 12800
+    },
+    {
+      "year": "2021",
+      "emissions": 13500
+    },
+    {
+      "year": "2022",
+      "emissions": 12300
+    },
+    {
+      "year": "2023",
+      "emissions": 11200
+    }
+  ],
+  "industryData": [
+    {
+      "name": "Oil & Gas",
+      "emissions": 4500
+    },
+    {
+      "name": "Chemical",
+      "emissions": 3800
+    },
+    {
+      "name": "Manufacturing",
+      "emissions": 2500
+    },
+    {
+      "name": "Energy",
+      "emissions": 3200
+    },
+    {
+      "name": "Transportation",
+      "emissions": 1800
+    }
+  ],
+  "regionData": [
+    {
+      "name": "Southeast",
+      "value": 35
+    },
+    {
+      "name": "Southwest",
+      "value": 25
+    },
+    {
+      "name": "Northeast",
+      "value": 15
+    },
+    {
+      "name": "Northwest",
+      "value": 10
+    },
+    {
+      "name": "Central",
+      "value": 15
+    }
+  ],
+  "industryPolicyData": [
+    {
+      "industry": "Oil & Gas",
+      "policies": [
+        "LDEQ Title V Air Quality Permits - Required for facilities emitting >100 tons/year of any regulated pollutant",
+        "Louisiana Spill Prevention and Control Act - Requires containment systems for all oil storage",
+        "LAC 33:III.501 - Requires quarterly emissions monitoring and reporting",
+        "LAC 33:III.2108 - Specific VOC emission limits for petroleum refineries"
+      ],
+      "thresholds": "100 tons CO₂ per year"
+    },
+    {
+      "industry": "Chemical",
+      "policies": [
+        "Louisiana Toxic Air Pollutant Ambient Air Standard (LAC 33:III.5112)",
+        "LDEQ Title V Air Quality Permits - Required for facilities emitting >100 tons/year",
+        "LAC 33:III.2103 - Requires continuous emissions monitoring systems (CEMS)",
+        "Chemical Accident Prevention Program - Required for facilities with threshold quantities of regulated substances"
+      ],
+      "thresholds": "75 tons CO₂ per year"
+    },
+    {
+      "industry": "Manufacturing",
+      "policies": [
+        "LAC 33:III.919 - Emissions Inventory Reporting requirements",
+        "Louisiana Air Quality Regulations (LAC 33:III) - General manufacturing emissions standards",
+        "LAC 33:III.2123 - Organic Solvent-Bearing Materials requirements",
+        "Prevention of Significant Deterioration (PSD) permit requirements"
+      ],
+      "thresholds": "90 tons CO₂ per year"
+    },
+    {
+      "industry": "Energy",
+      "policies": [
+        "Louisiana Mercury Risk Reduction Act - For coal-fired power plants",
+        "LAC 33:III.1101 - Control of emissions from power plants",
+        "Clean Air Interstate Rule (CAIR) - SO₂ and NOₓ trading programs",
+        "Acid Rain Program requirements for electricity generating facilities"
+      ],
+      "thresholds": "110 tons CO₂ per year"
+    },
+    {
+      "industry": "Transportation",
+      "policies": [
+        "LAC 33:III.2201 - Motor Vehicle Inspection/Maintenance Program",
+        "LAC 33:III.1431 - Emissions from marine vessels and cargo handling",
+        "Louisiana Diesel Emissions Reduction Act (DERA) Program",
+        "LAC 33:III.1101 - Control of emissions from transportation facilities"
+      ],
+      "thresholds": "60 tons CO₂ per year"
+    }
+  ],
+  "companyRequiringAttention": [
+    {
+      "companyId": 1,
+      "name": "Louisiana Petrochemical Inc.",
+      "industry": "Chemical Manufacturing",
+      "issue": "Missing Q2 Report",
+      "status": "Overdue",
+      "action": "Send Notice"
+    },
+    {
+      "companyId": 2,
+      "name": "Gulf Coast Energy",
+      "industry": "Energy Production",
+      "issue": "Emissions Exceed Limit",
+      "status": "Under Review",
+      "action": "Review Data"
+    },
+    {
+      "companyId": 13,
+      "name": "Bayou Steel Works",
+      "industry": "Manufacturing",
+      "issue": "Inconsistent Data",
+      "status": "Flagged",
+      "action": "Request Correction"
+    }
+  ],
+  "louisianaGeoJSON": {
+    "type": "Feature",
+    "properties": { "name": "Louisiana" },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [[
+        [-93.7456, 33.0225],
+        [-91.1645, 33.0169],
+        [-91.2209, 32.9920],
+        [-90.3494, 32.3588],
+        [-89.7240, 31.8496],
+        [-89.1894, 31.0116],
+        [-89.4946, 30.6671],
+        [-89.1838, 30.1546],
+        [-88.9382, 29.8454],
+        [-89.4357, 29.3571],
+        [-89.5603, 29.1803],
+        [-89.8511, 29.3102],
+        [-89.7075, 29.4026],
+        [-90.0932, 29.1528],
+        [-90.0712, 29.0632],
+        [-90.5608, 29.0841],
+        [-90.8461, 29.1486],
+        [-91.0356, 29.2501],
+        [-91.3208, 29.3209],
+        [-91.9061, 29.4849],
+        [-92.7452, 29.6956],
+        [-93.8182, 29.7370],
+        [-93.8678, 29.9925],
+        [-93.9395, 30.1437],
+        [-93.7593, 30.2993],
+        [-93.7016, 30.4361],
+        [-93.7428, 30.9451],
+        [-93.6989, 31.1105],
+        [-93.7263, 31.8713],
+        [-93.7126, 32.0231],
+        [-93.7456, 33.0225]
+      ]]
+    }
+  },
+  "stats": {
+    "registeredCompanies": 243,
+    "trackedCO2": "11.2M",
+    "emissionsReduction": "8.9%",
+    "complianceRate": "98%"
+  }
+}

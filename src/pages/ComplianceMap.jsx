@@ -3,150 +3,17 @@ import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { Icon } from 'leaflet'
 import { InfoIcon } from 'lucide-react'
+import appData from '../data/appData.json'
+import AIAssistant from '../components/AIAssistant.jsx'
 // Fix for default marker icons in react-leaflet
 // @ts-ignore
-
 delete Icon.Default.prototype._getIconUrl
 Icon.Default.mergeOptions({
-  iconRetinaUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",
-  iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
+  iconRetinaUrl:
+    'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
+  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
 })
-// Mock data for company locations
-const companyLocations = [
-  {
-    id: 1,
-    name: 'Louisiana Petrochemical Inc.',
-    position: [30.2154, -91.0336],
-    industry: 'Chemical',
-    emissions: 890450,
-    yoyChange: -5.2,
-    compliance: 'Compliant',
-    facility: 'Main Plant',
-    lastReport: 'Q1 2023',
-  },
-  {
-    id: 2,
-    name: 'Gulf Coast Energy',
-    position: [29.9511, -90.0715],
-    industry: 'Energy',
-    emissions: 765320,
-    yoyChange: 2.8,
-    compliance: 'Under Review',
-    facility: 'New Orleans Power Station',
-    lastReport: 'Q2 2023',
-  },
-  {
-    id: 3,
-    name: 'Bayou Oil Refineries',
-    position: [30.2266, -93.2174],
-    industry: 'Oil & Gas',
-    emissions: 712670,
-    yoyChange: -8.3,
-    compliance: 'Compliant',
-    facility: 'Lake Charles Refinery',
-    lastReport: 'Q1 2023',
-  },
-  {
-    id: 4,
-    name: 'Shreveport Manufacturing Co.',
-    position: [32.5252, -93.7502],
-    industry: 'Manufacturing',
-    emissions: 423150,
-    yoyChange: -2.1,
-    compliance: 'Compliant',
-    facility: 'North Plant',
-    lastReport: 'Q2 2023',
-  },
-  {
-    id: 5,
-    name: 'Delta Chemical Processing',
-    position: [30.4515, -91.1871],
-    industry: 'Chemical',
-    emissions: 651240,
-    yoyChange: 1.7,
-    compliance: 'Non-Compliant',
-    facility: 'Baton Rouge Complex',
-    lastReport: 'Q4 2022',
-  },
-  {
-    id: 6,
-    name: 'Lafourche Energy Systems',
-    position: [29.7055, -90.5311],
-    industry: 'Energy',
-    emissions: 542370,
-    yoyChange: -3.2,
-    compliance: 'Compliant',
-    facility: 'Thibodaux Plant',
-    lastReport: 'Q2 2023',
-  },
-  {
-    id: 7,
-    name: 'Alexandria Industrial',
-    position: [31.3113, -92.4451],
-    industry: 'Manufacturing',
-    emissions: 318900,
-    yoyChange: -1.5,
-    compliance: 'Under Review',
-    facility: 'Central LA Facility',
-    lastReport: 'Q1 2023',
-  },
-  {
-    id: 8,
-    name: 'Monroe Gas Works',
-    position: [32.5093, -92.1193],
-    industry: 'Oil & Gas',
-    emissions: 289450,
-    yoyChange: -4.8,
-    compliance: 'Compliant',
-    facility: 'Northeast Processing',
-    lastReport: 'Q2 2023',
-  },
-  {
-    id: 9,
-    name: 'Houma Shipping & Transport',
-    position: [29.5958, -90.7195],
-    industry: 'Transportation',
-    emissions: 187320,
-    yoyChange: 0.9,
-    compliance: 'Compliant',
-    facility: 'Gulf Port Operations',
-    lastReport: 'Q1 2023',
-  },
-  {
-    id: 10,
-    name: 'Bossier City Chemicals',
-    position: [32.5159, -93.7321],
-    industry: 'Chemical',
-    emissions: 431820,
-    yoyChange: 3.7,
-    compliance: 'Non-Compliant',
-    facility: 'Red River Plant',
-    lastReport: 'Q4 2022',
-  },
-  {
-    id: 11,
-    name: 'Lafayette Petroleum',
-    position: [30.2241, -92.0198],
-    industry: 'Oil & Gas',
-    emissions: 521430,
-    yoyChange: -2.3,
-    compliance: 'Under Review',
-    facility: 'Acadiana Complex',
-    lastReport: 'Q1 2023',
-  },
-  {
-    id: 12,
-    name: 'Hammond Manufacturing',
-    position: [30.5044, -90.4612],
-    industry: 'Manufacturing',
-    emissions: 276540,
-    yoyChange: -6.1,
-    compliance: 'Compliant',
-    facility: 'Tangipahoa Works',
-    lastReport: 'Q2 2023',
-  },
-]
 // Custom marker icons based on compliance status
 const createMarkerIcon = (status) => {
   let color = '#10B981' // Green for Compliant
@@ -165,53 +32,9 @@ const createMarkerIcon = (status) => {
     shadowSize: [41, 41],
   })
 }
-// Louisiana state GeoJSON simplified outline
-const louisianaGeoJSON = {
-  type: 'Feature',
-  properties: {
-    name: 'Louisiana',
-  },
-  geometry: {
-    type: 'Polygon',
-    coordinates: [
-      [
-        [-93.7456, 33.0225],
-        [-91.1645, 33.0169],
-        [-91.2209, 32.992],
-        [-90.3494, 32.3588],
-        [-89.724, 31.8496],
-        [-89.1894, 31.0116],
-        [-89.4946, 30.6671],
-        [-89.1838, 30.1546],
-        [-88.9382, 29.8454],
-        [-89.4357, 29.3571],
-        [-89.5603, 29.1803],
-        [-89.8511, 29.3102],
-        [-89.7075, 29.4026],
-        [-90.0932, 29.1528],
-        [-90.0712, 29.0632],
-        [-90.5608, 29.0841],
-        [-90.8461, 29.1486],
-        [-91.0356, 29.2501],
-        [-91.3208, 29.3209],
-        [-91.9061, 29.4849],
-        [-92.7452, 29.6956],
-        [-93.8182, 29.737],
-        [-93.8678, 29.9925],
-        [-93.9395, 30.1437],
-        [-93.7593, 30.2993],
-        [-93.7016, 30.4361],
-        [-93.7428, 30.9451],
-        [-93.6989, 31.1105],
-        [-93.7263, 31.8713],
-        [-93.7126, 32.0231],
-        [-93.7456, 33.0225],
-      ],
-    ],
-  },
-}
 const ComplianceMap = () => {
   const [selectedCompany, setSelectedCompany] = useState(null)
+  const { companies, louisianaGeoJSON } = appData
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
@@ -283,7 +106,7 @@ const ComplianceMap = () => {
               }}
             />
             {/* Company markers */}
-            {companyLocations.map((company) => (
+            {companies.map((company) => (
               <Marker
                 key={company.id}
                 position={company.position}
@@ -385,6 +208,8 @@ const ComplianceMap = () => {
           </div>
         </div>
       )}
+      {/* AI Assistant for Public Users */}
+      <AIAssistant userType="public" />
     </div>
   )
 }
