@@ -36,7 +36,7 @@ const Navigation = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
               <span className="text-green-700 font-bold text-xl">
-                Louisiana CO₂ Tracker
+                CO₂NNECT
               </span>
             </Link>
           </div>

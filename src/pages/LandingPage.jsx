@@ -33,8 +33,8 @@ const LandingPage = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="max-w-3xl">
               <h1 className="text-5xl font-bold tracking-tight sm:text-6xl mb-6 text-white leading-tight">
-                Louisiana <span className="text-green-300">CO₂ Emissions</span>{' '}
-                Reporting Platform
+                <span className="text-green-300">CO₂NNECT</span>{' '}
+                <br></br>Louisiana CO₂ Platform
               </h1>
               <p className="text-xl mb-8 text-gray-100">
                 A centralized platform for tracking, reporting, and managing
