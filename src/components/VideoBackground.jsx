@@ -20,7 +20,7 @@ const VideoBackground = ({ className }) => {
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source
-          src="https://files.catbox.moe/tk1kx5.mp4"
+          src="https://file.garden/aPuNvU9PkXWKuLlQ/tk1kx5.mp4"
           type="video/mp4"
         />
         Your browser does not support the video tag.
